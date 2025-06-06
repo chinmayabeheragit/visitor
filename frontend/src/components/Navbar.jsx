@@ -61,10 +61,10 @@ const Navbar = () => {
 
           {/* Logo + India Badge */}
           <div className="text-center md:ml-4">
-            <h1 className="text-2xl md:text-3xl font-bold font-handwritten tracking-wider text-gray-800">
-              Taste Trails India
+            <h1 className="text-2xl md:text-3xl font-bold font-handwritten tracking-wider text-gray-800 edu-vic-hand">
+              TripGo
             </h1>
-            <div className="text-xs font-semibold bg-emerald-500 px-2 py-0.5 inline-block text-white rounded tracking-widest mt-0.5">
+            <div className="text-xs font-semibold bg-emerald-500 px-2 py-0.5 inline-block text-white rounded tracking-widest mt-0.5 playfair-display">
               INDIA
             </div>
           </div>
@@ -78,7 +78,7 @@ const Navbar = () => {
         </div>
 
         {/* Nav Links (Desktop) */}
-        <ul className="hidden md:flex space-x-6 text-sm font-medium text-gray-800">
+        <ul className="hidden md:flex space-x-6 text-sm font-medium text-gray-800 lato-regular">
           {['Home', 'Destinations', 'Experiences', 'Gallery', 'Contact'].map((item, index) => (
             <li
               key={index}

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 import cruiseImg from '../assets/images/cruise.jpg';
 import hikingImg from '../assets/images/hiking.jpg';
@@ -23,24 +24,77 @@ const bottomCards = [
   { src: chillImg, title: 'Chill' },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      staggerChildren: 0.05, // minimal stagger
+      when: "beforeChildren",
+      ease: "easeOut",
+      duration: 0.4,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      ease: 'easeOut',
+      duration: 0.3, // shorter duration for snappier reveal
+    },
+  },
+};
+
 const TourCategories = () => {
+  const ref = useRef(null);
+  // No rootMargin, triggers exactly when element is visible
+  const isInView = useInView(ref, { once: true, margin: "0px" });
+
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-white via-emerald-50 to-white">
-      <div className="max-w-7xl mx-auto text-center">
+    <section
+      ref={ref}
+      className="py-20 px-4 bg-gradient-to-br from-white via-emerald-50 to-white"
+    >
+      <motion.div
+        className="max-w-7xl mx-auto text-center"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? 'visible' : 'hidden'}
+      >
         {/* Headings */}
-        <h2 className="text-2xl font-handwritten text-forest italic mb-2 tracking-wide">
+        <motion.h2
+          className="text-2xl font-handwritten text-forest italic mb-2 tracking-wide playfair-display"
+          variants={cardVariants}
+        >
           Wonderful Place For You
-        </h2>
-        <h3 className="text-5xl font-cursive text-emerald-600 font-bold mb-14 leading-snug">
+        </motion.h2>
+        <motion.h3
+          className="text-5xl font-cursive text-emerald-600 font-bold mb-14 leading-snug pacifico-regular"
+          variants={cardVariants}
+        >
           Tour Categories
-        </h3>
+        </motion.h3>
 
         {/* Top 5 Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 justify-center items-center mb-16 px-4">
+        <motion.div
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 justify-center items-center mb-16 px-4 lato-regular"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+        >
           {topCards.map((item, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 text-center border border-emerald-100"
+              variants={cardVariants}
+              whileHover={{ scale: 1.05, y: -5, boxShadow: '0 10px 20px rgba(16, 185, 129, 0.3)' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
               <img
                 src={item.src}
@@ -49,18 +103,26 @@ const TourCategories = () => {
               />
               <div className="p-4">
                 <h4 className="text-lg font-semibold text-forest mb-1">{item.title}</h4>
-                <p className="text-sm text-gray-500 font-sans">Read More</p>
+                <p className="text-sm text-gray-500 font-sans lato-regular">Read More</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Bottom 3 Cards */}
-        <div className="flex justify-center flex-wrap gap-6 px-4">
+        <motion.div
+          className="flex justify-center flex-wrap gap-6 px-4 lato-regular"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+        >
           {bottomCards.map((item, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-white w-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 text-center border border-emerald-100"
+              variants={cardVariants}
+              whileHover={{ scale: 1.05, y: -5, boxShadow: '0 10px 20px rgba(16, 185, 129, 0.3)' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
               <img
                 src={item.src}
@@ -69,12 +131,12 @@ const TourCategories = () => {
               />
               <div className="p-4">
                 <h4 className="text-lg font-semibold text-forest mb-1">{item.title}</h4>
-                <p className="text-sm text-gray-500 font-sans">Read More</p>
+                <p className="text-sm text-gray-500 font-sans lato-regular">Read More</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

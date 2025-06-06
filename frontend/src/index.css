@@ -1,5 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Hand:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Pacifico Font */
+.pacifico-regular {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  font-style: normal;
+}
 
+/* Edu VIC WA NT Hand Font */
+.edu-vic-hand {
+  font-family: 'Edu VIC WA NT Hand', cursive;
+  font-optical-sizing: auto;
+  font-weight: 500; /* Choose between 400–700 */
+  font-style: normal;
+}
+
+/* Playfair Display Font */
+.playfair-display {
+  font-family: 'Playfair Display', serif;
+  font-optical-sizing: auto;
+  font-weight: 500; /* Choose between 400–900 */
+  font-style: normal;
+}
+
+.lato-regular {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
