@@ -9,6 +9,9 @@ import TourCategories from '../components/TourCategories';
 import HeroSection from '../components/HeroSection';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
+import FoodGallery from '../components/FoodGalery';
+import AddTravelExperience from '../components/Experince';
+import Map from '../components/Map';
 
 const Home = () => {
   const textRef = useRef(null);
@@ -145,6 +148,9 @@ const Home = () => {
           </motion.p>
         </div>
       </section>
+      <FoodGallery />
+      <AddTravelExperience />
+      <Map />
       <Footer />
     </>
   );

@@ -3,6 +3,9 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import { Routes,Route } from 'react-router-dom';
 import Text from './pages/Text';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 
 
 function App() {

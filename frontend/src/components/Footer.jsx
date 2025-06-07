@@ -3,15 +3,19 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/f
 
 const Footer = () => {
   return (
-    <footer className="relative bg-gradient-to-b from-white via-emerald-50 to-emerald-100 pt-20 pb-10 px-6 text-gray-700 mt-24">
+    <footer className="relative bg-gradient-to-b from-white via-emerald-50 to-emerald-200 pt-20 pb-10 px-6 text-gray-700 mt-24 overflow-hidden">
+      
       {/* Cloud Curve Top */}
-      <div className="absolute top-0 left-0 w-full h-12 bg-white rounded-b-[60%] shadow-inner z-10" />
+      <div className="absolute top-0 left-0 w-full h-20 bg-white rounded-b-[60%] shadow-inner z-10" />
+
+      {/* Emerald Atmospheric Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-50 to-emerald-100 opacity-70 z-0 pointer-events-none" />
 
       <div className="relative z-20 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Logo & Intro */}
         <div>
           <h1 className="text-2xl font-bold text-emerald-600 mb-4 edu-vic-hand">TripGo</h1>
-          <p className="text-sm leading-relaxed">
+          <p className="text-sm leading-relaxed text-gray-700">
             Explore the world with flavors and sights that stay in your soul. Wander into joy, and let your heart taste adventure.
           </p>
         </div>
@@ -31,18 +35,15 @@ const Footer = () => {
         <div>
           <h2 className="font-semibold text-emerald-700 mb-4">Follow Us</h2>
           <div className="flex space-x-4">
-            <a href="#" className="bg-emerald-100 text-emerald-600 p-2 rounded-full hover:bg-emerald-500 hover:text-white transition">
-              <FaFacebookF />
-            </a>
-            <a href="#" className="bg-emerald-100 text-emerald-600 p-2 rounded-full hover:bg-emerald-500 hover:text-white transition">
-              <FaTwitter />
-            </a>
-            <a href="#" className="bg-emerald-100 text-emerald-600 p-2 rounded-full hover:bg-emerald-500 hover:text-white transition">
-              <FaInstagram />
-            </a>
-            <a href="#" className="bg-emerald-100 text-emerald-600 p-2 rounded-full hover:bg-emerald-500 hover:text-white transition">
-              <FaLinkedinIn />
-            </a>
+            {[FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn].map((Icon, i) => (
+              <a
+                key={i}
+                href="#"
+                className="bg-emerald-100 text-emerald-600 p-2 rounded-full hover:bg-emerald-500 hover:text-white transition"
+              >
+                <Icon />
+              </a>
+            ))}
           </div>
         </div>
 
@@ -66,7 +67,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Text */}
-      <div className="mt-16 border-t border-emerald-200 pt-6 text-center text-sm text-gray-500">
+      <div className="mt-16 border-t border-emerald-200 pt-6 text-center text-sm text-gray-500 relative z-20">
         &copy; {new Date().getFullYear()} TripGo. All rights reserved.
       </div>
     </footer>
